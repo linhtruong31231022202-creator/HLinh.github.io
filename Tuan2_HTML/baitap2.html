@@ -1,20 +1,33 @@
-<!DOCTYPE html>
-<html lang="vi">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Bài tập 2 - Phát triển ứng dụng TMĐT</title>
-  <style>
-    body { font-family: Arial, sans-serif; margin: 40px; }
-    h1 { color: #d97706; }
-    .result { background: #fef9c3; padding: 10px; border-radius: 6px; }
-  </style>
-</head>
-<body>
-  <h1>Bài tập 2</h1>
-  <p>Phần này hiển thị nội dung hoặc kết quả code của bài tập 2.</p>
-  <div class="result">
-    <p>Kết quả hiển thị ví dụ cho bài 2.</p>
-  </div>
-</body>
-</html>
+"<!DOCTYPE html>
+<html>
+  <head>
+    <title>Giỏ hàng của bạn</title>
+  </head>
+  <body>
+    <h2>Danh sách sản phẩm</h2>
+    <button onclick=""addToCart('Product 1')"">Thêm Product 1 vào giỏ</button>
+    <button onclick=""addToCart('Product 2')"">Thêm Product 2 vào giỏ</button>
+    <h2>Giỏ hàng của bạn</h2>
+    <ul id=""cart""></ul>
+    <script>
+      // Hàm thêm sản phẩm vào giỏ hàng
+      function addToCart(product) {
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+        cart.push(product);
+        localStorage.setItem('cart', JSON.stringify(cart));
+        displayCart();
+      } // Hàm hiển thị giỏ hàng
+      function displayCart() {
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+        let cartList = document.getElementById('cart');
+        cartList.innerHTML = '';
+        cart.forEach(function(product) {
+          let li = document.createElement('li');
+          li.textContent = product;
+          cartList.appendChild(li);
+        });
+      } // Hiển thị giỏ hàng ngay khi trang tải
+      displayCart();
+    </script>
+  </body>
+</html>"
