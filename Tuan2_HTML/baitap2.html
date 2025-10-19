@@ -1,33 +1,69 @@
-"<!DOCTYPE html>
-<html>
-  <head>
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
     <title>Giỏ hàng của bạn</title>
-  </head>
-  <body>
+</head>
+<body>
+
     <h2>Danh sách sản phẩm</h2>
-    <button onclick=""addToCart('Product 1')"">Thêm Product 1 vào giỏ</button>
-    <button onclick=""addToCart('Product 2')"">Thêm Product 2 vào giỏ</button>
-    <h2>Giỏ hàng của bạn</h2>
-    <ul id=""cart""></ul>
+    <button onclick="addToCart('Product 1')">Thêm Product 1 vào giỏ</button>
+    <button onclick="addToCart('Product 2')">Thêm Product 2 vào giỏ</button>
+
+    <hr> <h2>Giỏ hàng của bạn</h2>
+    <ul id="cart">
+        </ul>
+
+    <hr> <h2>Đăng ký</h2>
+    <form action="#" method="post">
+        <div>
+            <label for="reg_user">Tên đăng nhập:</label>
+            <input type="text" id="reg_user" name="username">
+        </div>
+        <div>
+            <label for="reg_pass">Mật khẩu:</label>
+            <input type="password" id="reg_pass" name="password">
+        </div>
+        <input type="submit" value="đăng ký">
+    </form>
+
+    <hr> <h2>Đăng nhập</h2>
+    <form action="#" method="post">
+        <div>
+            <label for="login_user">Tên đăng nhập:</label>
+            <input type="text" id="login_user" name="username">
+        </div>
+        <div>
+            <label for="login_pass">Mật khẩu:</label>
+            <input type="password" id="login_pass" name="password">
+        </div>
+        <input type="submit" value="đăng nhập">
+    </form>
+
     <script>
-      // Hàm thêm sản phẩm vào giỏ hàng
-      function addToCart(product) {
-        let cart = JSON.parse(localStorage.getItem('cart')) || [];
-        cart.push(product);
-        localStorage.setItem('cart', JSON.stringify(cart));
+        // Hàm thêm sản phẩm vào giỏ hàng
+        function addToCart(product) {
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+            cart.push(product);
+            localStorage.setItem('cart', JSON.stringify(cart));
+            displayCart();
+        }
+        
+        // Hàm hiển thị giỏ hàng
+        function displayCart() {
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+            let cartList = document.getElementById('cart');
+            cartList.innerHTML = '';
+            cart.forEach(function(product) {
+                let li = document.createElement('li');
+                li.textContent = product;
+                cartList.appendChild(li);
+            });
+        }
+        
+        // Hiển thị giỏ hàng ngay khi trang tải
         displayCart();
-      } // Hàm hiển thị giỏ hàng
-      function displayCart() {
-        let cart = JSON.parse(localStorage.getItem('cart')) || [];
-        let cartList = document.getElementById('cart');
-        cartList.innerHTML = '';
-        cart.forEach(function(product) {
-          let li = document.createElement('li');
-          li.textContent = product;
-          cartList.appendChild(li);
-        });
-      } // Hiển thị giỏ hàng ngay khi trang tải
-      displayCart();
     </script>
-  </body>
-</html>"
+
+</body>
+</html>
