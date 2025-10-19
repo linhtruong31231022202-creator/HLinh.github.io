@@ -1,143 +1,98 @@
-"<!DOCTYPE html>
-<html lang=""vi"">
-  <head>
-    <meta charset=""UTF-8"">
-    <meta name=""viewport"" content=""width=device-width, initial-scale=1.0"">
-    <title>Game Rắn ăn mồi</title>
-    <style>
-      body {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 100vh;
-        background-color: #333;
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Game Rắn Ăn Mồi</title>
+  <style>
+    body {
+      background-color: #2d2d2d;
+      color: white;
+      text-align: center;
+      font-family: Arial, sans-serif;
+    }
+    canvas {
+      background-color: black;
+      display: block;
+      margin: 20px auto;
+    }
+  </style>
+</head>
+<body>
+  <h2>Game Rắn Ăn Mồi</h2>
+  <p>Điểm: <span id="score">0</span></p>
+  <canvas id="game" width="300" height="300"></canvas>
+
+  <script>
+    const canvas = document.getElementById("game");
+    const ctx = canvas.getContext("2d");
+
+    const box = 15;
+    let snake = [{ x: 10 * box, y: 10 * box }];
+    let direction;
+    let food = {
+      x: Math.floor(Math.random() * 20) * box,
+      y: Math.floor(Math.random() * 20) * box
+    };
+    let score = 0;
+
+    document.addEventListener("keydown", event => {
+      if (event.key === "ArrowLeft" && direction !== "RIGHT") direction = "LEFT";
+      else if (event.key === "ArrowUp" && direction !== "DOWN") direction = "UP";
+      else if (event.key === "ArrowRight" && direction !== "LEFT") direction = "RIGHT";
+      else if (event.key === "ArrowDown" && direction !== "UP") direction = "DOWN";
+    });
+
+    function draw() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+      // Vẽ rắn
+      for (let i = 0; i < snake.length; i++) {
+        ctx.fillStyle = i === 0 ? "red" : "lime";
+        ctx.fillRect(snake[i].x, snake[i].y, box, box);
       }
 
-      canvas {
-        background-color: #000;
-        display: block;
+      // Vẽ mồi
+      ctx.fillStyle = "green";
+      ctx.fillRect(food.x, food.y, box, box);
+
+      // Vị trí đầu rắn
+      let headX = snake[0].x;
+      let headY = snake[0].y;
+
+      if (direction === "LEFT") headX -= box;
+      if (direction === "RIGHT") headX += box;
+      if (direction === "UP") headY -= box;
+      if (direction === "DOWN") headY += box;
+
+      // Ăn mồi
+      if (headX === food.x && headY === food.y) {
+        score++;
+        document.getElementById("score").textContent = score;
+        food = {
+          x: Math.floor(Math.random() * 20) * box,
+          y: Math.floor(Math.random() * 20) * box
+        };
+      } else {
+        snake.pop();
       }
 
-      h1 {
-        color: white;
-        text-align: center;
+      const newHead = { x: headX, y: headY };
+
+      // Game over nếu chạm tường hoặc thân
+      if (
+        headX < 0 || headX >= canvas.width ||
+        headY < 0 || headY >= canvas.height ||
+        snake.some(part => part.x === newHead.x && part.y === newHead.y)
+      ) {
+        clearInterval(game);
+        alert("Game Over! Điểm của bạn: " + score);
       }
-    </style>
-  </head>
-  <body>
-    <div>
-      <h1>Game Rắn Ăn Mồi</h1>
-      <canvas id=""gameCanvas"" width=""400"" height=""400""></canvas>
-    </div>
-    <script>
-      // Lấy tham chiếu tới canvas và ngữ cảnh 2D
-      const canvas = document.getElementById(""gameCanvas"");
-      const ctx = canvas.getContext(""2d""); // Kích thước ô lưới (mỗi phần của rắn và mồi là 1 ô)
-      const gridSize = 20;
-      const canvasSize = canvas.width; // Tạo mảng rắn với vị trí khởi điểm
-      let snake = [{
-        x: 200,
-        y: 200
-      }];
-      let direction = {
-        x: 0,
-        y: 0
-      };
-      let newDirection = {
-        x: 0,
-        y: 0
-      };
-      let food = generateFood(); // Tạo biến điểm số
-      let score = 0; // Hàm khởi tạo vị trí mồi ngẫu nhiên
-      function generateFood() {
-        return {
-          x: Math.floor(Math.random() * (canvasSize / gridSize)) * gridSize,
-          y: Math.floor(Math.random() * (canvasSize / gridSize)) * gridSize,
-        };
-      } // Hàm vẽ ô vuông trên canvas
-      function drawSquare(x, y, color) {
-        ctx.fillStyle = color;
-        ctx.fillRect(x, y, gridSize, gridSize);
-      } // Hàm vẽ game (vẽ rắn và mồi)
-      function drawGame() {
-        ctx.clearRect(0, 0, canvasSize, canvasSize); // Vẽ rắn
-        for (let part of snake) {
-          drawSquare(part.x, part.y, ""lime"");
-        } // Vẽ mồi
-        drawSquare(food.x, food.y, ""red""); // Hiển thị điểm số
-        ctx.fillStyle = ""white"";
-        ctx.font = ""20px Arial"";
-        ctx.fillText(`Điểm: ${score}`, 10, 30);
-      } // Hàm di chuyển rắn
-      function moveSnake() {
-        const head = {
-          x: snake[0].x + direction.x,
-          y: snake[0].y + direction.y
-        }; // Kiểm tra va chạm tường
-        if (head.x < 0 || head.x >= canvasSize || head.y < 0 || head.y >= canvasSize) {
-          resetGame();
-          return;
-        } // Kiểm tra va chạm với chính thân mình
-        for (let part of snake) {
-          if (head.x === part.x && head.y === part.y) {
-            resetGame();
-            return;
-          }
-        }
-        snake.unshift(head); // Kiểm tra nếu rắn ăn mồi
-        if (head.x === food.x && head.y === food.y) {
-          score++;
-          food = generateFood();
-        } else {
-          snake.pop(); // Nếu không ăn mồi thì bỏ đuôi rắn đi
-        }
-      } // Hàm đặt lại game khi rắn chết
-      function resetGame() {
-        snake = [{
-          x: 200,
-          y: 200
-        }];
-        direction = {
-          x: 0,
-          y: 0
-        };
-        newDirection = {
-          x: 0,
-          y: 0
-        };
-        score = 0;
-      } // Hàm cập nhật hướng di chuyển dựa trên phím nhấn
-      function updateDirection(event) {
-        const keyPressed = event.keyCode;
-        if (keyPressed === 37 && direction.x === 0) {
-          newDirection = {
-            x: -gridSize,
-            y: 0
-          }; // Trái
-        } else if (keyPressed === 38 && direction.y === 0) {
-          newDirection = {
-            x: 0,
-            y: -gridSize
-          }; // Lên
-        } else if (keyPressed === 39 && direction.x === 0) {
-          newDirection = {
-            x: gridSize,
-            y: 0
-          }; // Phải
-        } else if (keyPressed === 40 && direction.y === 0) {
-          newDirection = {
-            x: 0,
-            y: gridSize
-          }; // Xuống
-        }
-      } // Vòng lặp chính để cập nhật và vẽ game
-      function gameLoop() {
-        direction = newDirection;
-        moveSnake();
-        drawGame();
-      } // Lắng nghe sự kiện nhấn phím
-      window.addEventListener(""keydown"", updateDirection); // Bắt đầu game, chạy vòng lặp mỗi 100ms
-      setInterval(gameLoop, 100);
-    </script>
-  </body>
-</html>"
+
+      snake.unshift(newHead);
+    }
+
+    const game = setInterval(draw, 150);
+  </script>
+</body>
+</html>
