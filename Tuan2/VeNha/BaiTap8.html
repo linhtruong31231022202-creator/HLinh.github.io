@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>BaiTap8</title>
+    <style>
+        section, header, hgroup, footer, nav, article, aside, figure, figcaption, aside, .section, .header, .hgroup, .footer, .nav, .article, .aside, .figure, .figcaption, .aside {
+            border: 1px solid rgb(255,255,255);
+            background-color: rgba(153,153,153,.25);
+            display: block;
+            padding: 5px;
+            margin: 5px;
+        }
+        
+        section, aside, .section, .aside {
+            float: left;
+        }
+        
+        nav {
+            background-color: #e0e0e0;
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+        }
+
+  	    header, footer, .header, .footer {
+  		    clear: both;
+        }
+    
+        header img {
+            width: 500px;
+            height: auto;
+        }
+  	
+  	    #pagecontent {
+  		    margin: 0 auto;
+  		    max-width: 1045px;
+  		    min-width: 480px;
+  		    width: 100%;
+  	    }
+  	
+  	    #pageheader, #pagefooter { 
+  		    max-width: 1020px;
+  		    min-width: 480px;
+  		    width: 100%;
+  	    }
+  	
+        #sectioncontent1 {
+            max-width: 600px;
+      		min-width: 400px;
+        	width: 100%;
+  	    }
+        
+        #asidecontent1 {
+            max-width: 400px;
+            width: 100%;
+     	}
+    
+        img {
+            width: 100%;
+            height: auto;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+    </style>
+</head>
+<body>
+<div id="pagecontent">
+
+    <!-- Header trang -->
+    <header id="pageheader">
+        <hgroup>
+            <h1 class="sitename"><a href="/" rel="home" title="Home">HTML5 Structure</a></h1>
+            <img src="https://bit.ueh.edu.vn/wp-content/uploads/2017/06/BIT_logo.png">
+        </hgroup>
+
+        <nav id="globalnav">
+            <a href="https://www.ueh.edu.vn/dao-tao/dai-hoc-chinh-quy">Chương trình Đại học</a>
+            <a href="https://tuyensinh.ueh.edu.vn/vua-lam-vua-hoc/lien-thong-cao-dang/">CT Liên thông Đại học</a>
+            <a href="https://www.ueh.edu.vn/dao-tao/thac-si-tien-si">Chương trình Sau đại học</a>
+            <a href="https://www.ueh.edu.vn/dao-tao/lien-ket-quoc-te">Chương trình quốc tế</a>        
+        </nav>
+    </header>
+
+    <!-- Nội dung chính -->
+    <section id="sectioncontent1">
+        <header>
+            <h2>Chương trình Đại học</h2>
+        </header>
+        <!-- Bài viết 1 -->
+        <article>
+            <header>
+                <h3><a href="https://ueh.edu.vn/dao-tao/dai-hoc-chinh-quy/cu-nhan-chinh-quy-chuan/he-thong-hoach-dinh-nguon-luc-doanh-nghiep">Hệ thống hoạch định nguồn lực doanh nghiệp (ERP)</a></h3>
+            </header>
+            <p>Nhu cầu xã hội Hoạch định nguồn lực một cách hiệu quả để nhắm đến mục tiêu giảm chi phí, tăng sức cạnh tranh là một yếu tố mà mọi doanh nghiệp luôn phải đối mặt, nhất là trong thời kỳ hội nhập hiện nay. Hệ thống hoạch định nguồn lực doanh nghiệp (ERP) [...]</p>
+            <image src="https://bit.ueh.edu.vn/en/wp-content/uploads/sites/2/2021/05/ERP-770x385-1-770x385.jpg"></image>
+        </article>
+    </section>
+
+    <!-- Thanh bên phải -->
+    <aside id="asidecontent1">
+        <header>
+            <h2>Liên kết</h2>
+        </header>
+        <article>
+            <header>
+                <h3><a href="https://ueh.edu.vn/dao-tao/dai-hoc-chinh-quy/cu-nhan-chinh-quy-chuan/he-thong-thong-tin-kinh-doanh">Hệ thống thông tin kinh doanh</a></h3>
+            </header>
+            <image src="https://bit.ueh.edu.vn/wp-content/uploads/2017/06/mis-770x385.jpg"></image>
+            <p>
+                Nhu cầu xã hội Hiện nay, ứng dụng công nghệ trong điều hành doanh nghiệp giúp doanh nghiệp tối ưu hóa hoạt động và nâng cao năng suất làm việc.
+            </p>
+        </article>
+</div>
+</body>
+</html>
