@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<head>
+    <meta charset="UTF-8">
+    <title>Heroes of JavaScript and HTML</title>    
+    <style>
+ 
+body {
+  margin: 0;
+  background: #bfbfbf;
+  font-family: "Segoe UI", Arial, sans-serif;
+  color: #222;
+}
+
+
+/*Khung chứa lớn */
+#root {
+  width: 960px;
+  margin: 24px auto;
+  font-size: 16px;
+  background: #cfcfcf;
+  padding: 24px;
+}
+
+
+.header {
+  font-size: 36px;
+  text-align: center;
+}
+
+
+/* Description đầu trang */
+#root > .description {
+  margin: 14px 0 24px;
+  background: #a7a7a7;
+  padding: 16px 18px;
+  border: 2px solid #e6e6e6;
+  border-radius: 10px;
+}
+
+
+.container .remark {
+  text-align: center;
+}
+
+
+/* Danh sách hero */
+.heroes-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;              /* xếp các phần tử ngang hàng */
+  justify-content: space-between;
+  flex-wrap: nowrap;          /* không xuống dòng */
+}
+
+
+/* Hero-item */
+.hero-item {
+  width: 23%;                
+  background: transparent;
+  position: relative;
+  text-align: center;
+}
+
+
+/*Tiêu đề mỗi hero */
+.hero-item h2 {
+  font-size: 18px;
+  text-align: center;
+  margin: 0 0 8px;
+  font-weight: 700;
+}
+
+
+/* Ô mô tả chồng lên ảnh */
+.hero-item .description {
+  position: absolute;
+  top: 46px;
+  left: 10px;
+  right: 10px;
+  height: 210px;
+  margin: 0;
+  padding: 12px;
+  font-size: 14px;
+  text-align: justify;
+  background: rgba(60, 60, 60, 0.88);
+  color: #000000;
+  border: 2px solid #e6e6e6;
+  border-radius: 8px;
+  z-index: 2;
+  overflow: hidden;
+}
+
+
+/* Hình ảnh hero */
+.hero-item img {
+  position: relative;
+  width: 100%;
+  height: 240px;
+  border: 2px solid #d0d0d0;
+  margin-top: 95px;
+  object-fit: cover;
+  border-radius: 0 0 16px 16px;
+}
+    </style>
+</head>
+
+
+<body>
+    <div id="root">
+        <h1 class="header">
+            <i class="fas fa-address-card"></i>
+            Heroes of JavaScript and HTML</h1>
+           
+        <p class="description">
+            <i class="fab fa-android"></i>
+            <strong>Heroes of JavaScript and HTML</strong> is a "Heroes of Might and Magic"-like game, but for code nerds.
+            Each hero has its unique coding abilities and based on them he can develop software applications.
+        </p>
+        <div class="container">
+            <p class="remark">Currently the game has only four hero types:</p>
+            <ul class="heroes-list">
+                <li class="hero-item">
+                    <h2>Front-end Developer</h2>
+                    <p class="description">
+                        Being the ultra masters of JavaScript, the order of the <strong>Front-enders</strong> is known to
+                        create user interfaces, that fill the users with absolute pleasure
+                    </p>
+                    <img class="animated infinite bounce delay-2s" src="imgs/fe.png" alt="">
+                </li>
+                <li class="hero-item">
+                    <h2>Mobile Developer</h2>
+                    <p class="description">
+                        The movement of the <strong>Mobile developers</strong> is brand new, yet in their short time they
+                        already manage to amaze the peoples of the worlds and beyond with create applications.
+                    </p>
+                    <img src="imgs/mobile.jpg" alt="">
+                </li>
+                <li class="hero-item">
+                    <h2>Web Developer</h2>
+                    <p class="description">
+                        The sect of the <strong>Web developers</strong> is the oldest there is. They prefer the old ways and rarely move to modern stuff. The Old Religion gives them power of small gods.
+                    </p>
+                    <img src="imgs/web.jpg" alt="">
+                </li>
+                <li class="hero-item">
+                    <h2>QA Engineer</h2>
+                    <p class="description">
+                        The <strong>QAs</strong> are the desiders of fates! They always have the final word, and all gods and mortals are bound to obey them.
+                    </p>
+                    <img src="imgs/qa.jpg" alt="">
+                </li>
+            </ul>
+        </div>
+    </div>
+</body>
+
+
+</html>
+

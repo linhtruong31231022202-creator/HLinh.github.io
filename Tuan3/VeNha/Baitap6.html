@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Học web chuẩn</title>
+<style>
+   body {
+       font-family: Arial, sans-serif;
+       margin: 40px;
+       text-align: center;
+   }
+
+
+   /* Tiêu đề */
+   .portfolio h2 {
+       font-size: 24px;
+       font-weight: bold;
+       color: #222;
+       margin-bottom: 10px;
+   }
+
+   /* Gạch chân dưới tiêu đề */
+   .portfolio h2::after {
+       content: "";
+       display: block;
+       width: 60px;
+       height: 2px;
+       background-color: #00bfa5;
+       margin: 8px auto;
+   }
+
+
+   /* Thanh danh mục */
+   .list-tab {
+       list-style: none;
+       padding: 0;
+       margin: 0 0 30px 0;
+   }
+
+
+   .list-tab li {
+       display: inline-block;
+       margin: 0 10px;
+   }
+   .list-tab a {
+       text-decoration: none;
+       color: #333;
+       font-weight: bold;
+   }
+
+
+   .list-tab a:hover,
+   .list-tab a:first-child {
+       color: #00bfa5;
+   }
+
+
+   /* Phần hình ảnh gallery */
+   .galerry {
+       list-style: none;
+       padding: 0;
+       margin: 0 auto;
+       display: flex;
+       flex-wrap: wrap;
+       justify-content: center;
+       gap: 20px;
+       max-width: 1100px;
+   }
+   .galerry li {
+       width: 350px;
+       height: 260px;
+       background-color: #a3cd8c; /* màu xanh lá nhạt giống hình */
+       display: flex;
+       align-items: center;
+       justify-content: center;
+   }
+   .galerry img {
+       width: 100%;
+       height: 100%;
+       object-fit: cover;
+       opacity: 0.05; /* mờ để hiện chữ */
+       position: absolute;
+   }
+
+
+   .galerry li a {
+       position: relative;
+       display: block;
+       width: 100%;
+       height: 100%;
+       color: white;
+       font-size: 18px;
+       font-weight: normal;
+       line-height: 260px;
+       text-decoration: none;
+   }
+</style>
+</head>
+<body>
+<section class="portfolio">
+   <h2>MY PORTFOLIO</h2>
+   <ul class="list-tab">
+       <li><a href="#">All</a></li>
+       <li><a href="#">Web App</a></li>
+       <li><a href="#">UI/UX</a></li>
+       <li><a href="#">Graphics Design</a></li>
+       <li><a href="#">Mobile App</a></li>
+       <li><a href="#">Branding</a></li>
+       <li><a href="#">Marketing</a></li>
+   </ul>
+   <ul class="galerry">
+       <li><a href="#">Học Web Chuẩn</a></li>
+       <li><a href="#">Học Web Chuẩn</a></li>
+       <li><a href="#">Học Web Chuẩn</a></li>
+   </ul>
+</section>
+
+
+</body>
+</html>
+
+
