@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Original Hover Effects (Tùy chỉnh - Không Matrix)</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f4f4f4;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        h1 {
+            width: 100%;
+            max-width: 900px;
+            margin-top: 40px;
+        }
+
+        .container {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 50px;
+            max-width: 900px;
+            width: 100%;
+            justify-content: center;
+        }
+        /* CẤU TRÚC CHUNG  */
+        .view {
+            width: 300px;
+            height: 200px;
+            overflow: hidden;
+            position: relative;
+            text-align: center;
+            border: 1px solid #ccc;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .view img {
+            display: block;
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+
+        .view .mask, .view .content {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            overflow: hidden;
+            top: 0;
+            left: 0;
+        }
+
+        .view h2 {
+            text-transform: uppercase;
+            color: #fff;
+            text-align: center;
+            position: relative;
+            font-size: 17px;
+            padding: 10px;
+            background: rgba(0, 0, 0, 0.8);
+            margin: 20px 0 0 0;
+            transition: all 0.5s ease;
+        }
+
+        .view p {
+            font-size: 12px;
+            color: #fff;
+            padding: 10px 20px;
+            text-align: center;
+        }
+        /* 1. HIỆU ỨNG VÍ DỤ 1  */
+        .view-first {
+            background: #e0f7fa; 
+        }
+        
+        /* mask ẩn bên trái và chạy vào khi hover */
+        .view-first .mask {
+            background-color: rgba(0, 0, 0, 0.7);
+            transform: translateX(-100%); 
+            transition: all 0.3s ease-in-out;
+        }
+        
+        .view-first:hover .mask {
+            transform: translateX(0);
+        }
+        
+        /* Nội dung ẩn và chạy xuống khi mask chạy vào */
+        .view-first h2,
+        .view-first p {
+            transform: translateY(-100px); 
+            opacity: 0;
+            transition: all 0.3s ease-in-out 0.2s; 
+        }
+
+        .view-first:hover h2,
+        .view-first:hover p {
+            transform: translateY(0); 
+            opacity: 1;
+        }
+        /* 2. HIỆU ỨNG VÍ DỤ 7  */
+        .view-seventh img {
+            /* Ảnh xoay và phóng to */
+            transform: scale(1) rotate(0deg);
+            transition: all 0.4s ease-in-out;
+        }
+
+        /* Mask hoàn toàn trong suốt */
+        .view-seventh .mask {
+            background: rgba(0, 0, 0, 0); 
+            opacity: 1; 
+            transition: all 0.4s ease-in-out;
+        }
+        
+        /* Ẩn nội dung */
+        .view-seventh .content {
+            opacity: 0;
+            transition: all 0.4s ease-in-out;
+        }
+
+        /* Hover: Ảnh xoay và phóng to */
+        .view-seventh:hover img {
+            transform: scale(1.2) rotate(45deg);
+        }
+        
+        /* Hover: Nội dung xoay cùng với ảnh */
+        .view-seventh:hover .content {
+            opacity: 1;
+            transform: rotate(45deg); 
+        }
+        /* 3. HIỆU ỨNG CÁ NHÂN (Button Glow) */
+        .custom-button {
+            background-color: #3498db; 
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 8px;
+            font-size: 18px;
+            cursor: pointer;
+            
+            /* Thiết lập Transform mặc định */
+            transform: translateY(0) scale(1);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            
+            /* Hiệu ứng chuyển đổi */
+            transition: all 0.3s ease-out;
+            margin-top: 20px;
+        }
+
+        .custom-button:hover {
+            /* Phóng to và di chuyển nhẹ lên trên */
+            transform: translateY(-5px) scale(1.05); 
+            
+            /* Đổ bóng rực rỡ (Glow Effect) */
+            box-shadow: 
+                0 8px 15px rgba(52, 152, 219, 0.4), 
+                0 0 25px rgba(52, 152, 219, 0.8);
+        }
+    </style>
+</head>
+<body>
+    <h1>1. Hiệu ứng Ví dụ 1 </h1>
+    <div class="container">
+        <div class="view view-first">
+            <img src="https://picsum.photos/300/200?random=1" alt="Ảnh minh họa" />
+            <div class="mask">
+                <h2>Tiêu đề</h2>
+                <p>Nội dung</p>
+            </div>
+        </div>
+    </div>
+
+    ---
+
+    <h1>2. Hiệu ứng Ví dụ 7 </h1>
+    <div class="container">
+        <div class="view view-seventh">
+            <img src="https://picsum.photos/300/200?random=2" alt="Ảnh" />
+            <div class="mask">
+                <div class="content">
+                    <h2>Tiêu đề</h2>
+                    <p>Nội dung </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    ---
+
+    <h1>3. Hiệu ứng Cá nhân </h1>
+    <div class="container">
+        <button class="custom-button">Hiệu ứng cá nhân: Glow</button>
+    </div>
+</body>
+</html>

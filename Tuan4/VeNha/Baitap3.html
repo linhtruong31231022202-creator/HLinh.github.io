@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hiệu ứng Hover với Animate.css</title>
+    
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    />
+    
+    <style>
+        /* CSS Cơ bản cho chữ Khoa CNTTKD */
+        .cntt-kd {
+            background-color: blue;
+            color: white;
+            font-size: 24px;
+            padding: 15px 25px;
+            display: inline-block;
+            cursor: pointer;
+            border-radius: 8px;
+            margin: 50px;
+        }
+
+        /*hiệu ứng diễn ra nhanh*/
+        .cntt-kd.animate__animated {
+            --animate-duration: 0.8s;
+        }
+    </style>
+</head>
+<body>
+    <h1>Di chuột vào chữ để xem hiệu ứng Animate.css:</h1>
+    
+    <div 
+        id="animateElement" 
+        class="cntt-kd"
+        data-hover-effect="animate__tada" /* Chọn hiệu ứng  */
+    >
+        Khoa CNTTKD
+    </div>
+
+    <p>Nhấp vào nút dưới để đổi hiệu ứng:</p>
+    <button onclick="setEffect('animate__tada')">Tada </button>
+    <button onclick="setEffect('animate__bounce')">Bounce </button>
+    <button onclick="setEffect('animate__shakeX')">ShakeX </button>
+
+    <script>
+        const element = document.getElementById('animateElement');
+        let currentEffect = element.getAttribute('data-hover-effect');
+
+        // Hàm thay đổi hiệu ứng
+        function setEffect(effectName) {
+            currentEffect = effectName;
+            element.setAttribute('data-hover-effect', effectName);
+        }
+        // Hàm kích hoạt hiệu ứng khi di chuột vào
+        element.addEventListener('mouseenter', () => {
+            // 1. Thêm các class cần thiết cho Animate.css
+            element.classList.add('animate__animated', currentEffect);  
+            // 2. Lắng nghe sự kiện kết thúc animation để loại bỏ class
+            element.addEventListener('animationend', handleAnimationEnd, { once: true });
+        });
+        // Hàm loại bỏ class sau khi animation kết thúc
+        function handleAnimationEnd() {
+            element.classList.remove('animate__animated', currentEffect);
+        }
+    </script>
+</body>
+</html>
