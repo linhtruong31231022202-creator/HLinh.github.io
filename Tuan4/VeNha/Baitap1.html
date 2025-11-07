@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hiệu ứng Hover Transform</title>
+    <style>
+    
+        /* 1. Thiết lập trạng thái cơ bản (trước khi hover) */
+        
+        .cntt-kd {
+            /* Kích hoạt hiệu ứng chuyển đổi: tất cả thuộc tính, thời gian 1 giây, tốc độ ease-in-out */
+            transition: all 1s ease-in-out; 
+            
+            /* Dữ liệu hiển thị */
+            color: white;
+            padding: 15px 20px;
+            display: inline-block; 
+            text-align: center;
+            cursor: pointer; 
+
+            /* a. Màu nền: xanh */
+            background-color: blue;
+            
+            /* b. Font chữ: 20px */
+            font-size: 20px;
+            
+            /* c. Transform: matrix(1,0,0,1,0,0) (matrix mặc định, không thay đổi) */
+            transform: matrix(1, 0, 0, 1, 0, 0);
+        }
+        /* 2. Thiết lập trạng thái Hover */
+        
+        .cntt-kd:hover {
+            /* a. Màu nền: chuyển sang đỏ */
+            background-color: red;
+
+            /* b. Font chữ: chuyển sang 50px */
+            font-size: 50px;
+
+            /* c. Transform: chuyển sang matrix(1.4,-0.54,0.54,1.4,0,0) */
+            transform: matrix(1.4, -0.54, 0.54, 1.4, 0, 0);
+        }
+    </style>
+</head>
+<body>
+    <h1>Di chuột vào ô dưới đây để xem hiệu ứng:</h1>
+    <div class="cntt-kd">Khoa CNTTKD</div>
+</body>
+</html>
