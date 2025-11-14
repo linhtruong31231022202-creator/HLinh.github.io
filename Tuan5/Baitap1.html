@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Danh sách Mỹ phẩm</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <style>
+    body { background-color: #f9f9f9; }
+    .product-card {
+      background: #fff;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      padding: 15px;
+      margin-bottom: 30px;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.2s;
+    }
+    .product-card:hover { transform: translateY(-4px); }
+    .product-img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      border-radius: 6px;
+    }
+    .discount-tag {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      background: #e63946;
+      color: #fff;
+      padding: 4px 8px;
+      font-size: 13px;
+      border-radius: 4px;
+      font-weight: bold;
+    }
+    .status-tag {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background: #007bff;
+      color: #fff;
+      padding: 4px 8px;
+      font-size: 13px;
+      border-radius: 4px;
+      font-weight: bold;
+    }
+    .price { color: #e63946; font-weight: bold; font-size: 16px; }
+    .btn-buy {
+      background-color: #ff4081;
+      color: white;
+      border: none;
+      width: 100%;
+      margin-top: 10px;
+    }
+    .btn-buy:hover { background-color: #e91e63; }
+    .progress { margin-top: 10px; height: 10px; border-radius: 5px; }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <h1 class="text-center" style="margin: 30px 0;">Danh sách Mỹ phẩm</h1>
+
+  <div class="row">
+    <!-- Sản phẩm 1 -->
+    <div class="col-sm-4">
+      <div class="product-card">
+        <span class="discount-tag">-20%</span>
+        <span class="status-tag">NEW</span>
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQaCtAsD-poZ6MnHJrwBo40zj-dJ0pBDTNXqS-WH7WFDRgfcbM6AdAggQ88JUSHh8DEmPc&usqp=CAU" alt="Kem Dưỡng Da" class="product-img">
+        <h4>Kem Dưỡng Da Ban Đêm</h4>
+        <p>Giúp làn da mềm mịn, trắng sáng tự nhiên.</p>
+        <p class="price">350.000đ <small><del>440.000đ</del></small></p>
+
+        <!-- Thanh trạng thái kho -->
+        <label>Còn hàng: 60%</label>
+        <div class="progress">
+          <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="60"
+               aria-valuemin="0" aria-valuemax="100" style="width:60%">
+          </div>
+        </div>
+
+        <a href="product-detail.html" class="btn btn-buy">Xem chi tiết</a>
+      </div>
+    </div>
+
+    <!-- Sản phẩm 2 -->
+    <div class="col-sm-4">
+      <div class="product-card">
+        <span class="discount-tag">-10%</span>
+        <span class="status-tag" style="background:#28a745;">BEST SELLER</span>
+        <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBw8QEhIQDg8QDQ4QExAQDxAQDxAPDxEPFhEWFxUSFRMYHSkgGBolGxUVITEhMSkrLi4vFx8zODMtNygtLisBCgoKDg0OGxAQGC0dHyUrKy0rKy0tLTYrNS0tLS0tKystLSstKy0tLS0tLSstLS0tKy0rKzctLTctNzc3LS0tLf/AABEIAOEA4QMBIgACEQEDEQH/xAAcAAEAAwEBAQEBAAAAAAAAAAAABAUGAwcCAQj/xABHEAACAQICBAkJBAkCBwEAAAAAAQIDEQQhBQYSMRMiMjNBUXFysgc0YXOCkbGzwTWBofAkQlN0k6LC0eEjJUNSYoOS0vEV/8QAGQEBAQEBAQEAAAAAAAAAAAAAAAIBAwQF/8QAIREBAQABBQEBAAMBAAAAAAAAAAECAxEhMUESBDJCUSL/2gAMAwEAAhEDEQA/APcQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPidRKy6Xe33f/AED7By4X0L3/AOD5qYjZV2l7/wDAbs7gr3pP/o/m/wAEjDYyE3ZPO17dX5uZMpW3GxIABqQAAAAAAAAAAAAAAAAAAAAABF0riXRo1asUnKnTqTinubjFtJ+g8Zx+sGkKjcqmIrxv0QlKnD7lGyJyz+Xq/P8Aky1t7LtI9wB4VhNacbQe0sVVsuipOVWD9GzK57Zo3EurRpVWrOpTp1GluTlBO34jHLdn6Py5aO2933SQAU8wRcVy4dk/jElEbFcqPZP4xDY+StxlS8nnuyS7N5ZFDtceV/8Aml8TlqV10pvXdzyytuP3Qy/SHl/wX8yJGni4xybz9CvbtJOgq8Z15W/ZPf30c8b/ANR1yl+a0IAPS8gAAAAAAAAAAAAAAAAAAAAAqNbcRGng8Q5bpU3TXenxY/i0eXR5iR6Trwv0V+tw/wA6JnNcdHUMNo2vi6dNqdOCnsKTUJS2ks10LPoscs8ba+j+L9WGjjZl7Xl2lNx/Qer008LhnF3XAUbfw0ea4LVjCVcLSxNRVJzqU6dVxc7QTlFOy2UnbPrPQdTklg6CSslGSSWSSU5WRuE2T+3Xx1bPlcgA6PAEbFcqPZL4xJJUab0nChOhwmUKjnDb6IvitN+gCYZnSFRxqTjuzb9+f1NKUmnsG78LHNOyn6Gtz/PUcdWcPRoWfXKovfeWmrC/SJep/rRBoUW/yi50Fhdiq3107fzI46cv1K762U+bF+AD2PAAAAAAAAAAAAAAAAAAAAAAKDXfzWXrcP8APgUvlG+w8X6leOJda8eaS9bh/nwKXyifYeL9SvHEn1viNoV/7dhv3ej8tGp1P8zo9k/mSMpoN/7bhv3ej8tGr1P8zo9k/mSMx7Vl0uQAWgMR5T3aGH38ue7uo25iPKguJh93Lqb+6icumZdJmpmkuHw6jJt1KL4OV97ja8H7svZL8898ntfYryp3WzUpvc98otNP3bXvPQjMbvDG8I8sJHfFWf4H3gac1Ubla2xZW7x1Puhyvu+pvzHT6uySACkAAAAAAAAAAAAAAAAAAAAACg1480l6zD/PgU3lC+w8X6j+pFzrx5pL1mH+fApfKF9h4v1P9USfW+Iegvs3Dfu9H5aNZqd5nR7J/MkZLQP2bhf3ej8tGt1O8zo9k/mSMx7bl0uQAWkMb5RobUcOl0yqeFGyMzrol/ode1O27faNicumXpQ6i6GqRqPEVIqMYqUKfXKTycl6Err7/Qbg50aahFRW6KSX3Igab0nPDxThTjWbU3sudWMns2soqFOe03e1sugSbNk2WZ90OU+z6kWriVF2e69m+r0knCyTldO62fqbupKABqQAAAAAAAAAAAAAAAAAAAABktfKzTwtPjcHUqTc1xnCWwouKaSd3d3XdK/yi46lDRdWEuHpKUIrbp4SrVjFbS37SjD3yRO1+rwhPB7c4QvVqNbUlG9oLr7SD5Saka+iMRToTjXqOEbQpSVSbzWSjG7ZPqvEDVfG06mBopKtK1KC2qmGrUlLirjLiuNuyTXpZofJ7XlKliINycKWJcad9pKMXRpS2EmlbjSk+rje6i1ZrQp6Pw0Kk4U5xoU1KE5xhKLUFdOLzTLrycVoTp4vYlGdsXK7jJSXm1DqMnbb01wALQFXpnAQrSpbbklBzktl243FsWhFxXKj2T+MTKI+LrOEXJR23dJR2tm93bfbLrM9rnVcIU6m2qU4xrWi8TSobcnGKdNOdKe1LoVkrZu66bzSMJOKUbcqLads0nfp9KRmfKDUVqSVTg3s15J8JiaW1xYu23RlGyy6X1WzMt2VFhhsde6qZ3+u8ttEVE6kkt2wnb07TMzT/O8vNXW+Fn6uPiZzwvK8pw0IAOzkAAAAAAAAAAAAAAAAAAAAAMtpbAbeKdaV9qEYU47MkuIryzTi87yY0zhY4ii6FaLqU5W2ouooXt6YQT/EsMbzsvZ8KI9bcc6pQUKLw9ONGktmlBbMY7alZdso3fvPrU6co4yVkkqsLTvZviXcVGyVs5PedsZ0nPVbzuPdqeEmXlXjeA44ytwcHK17Wy7ZJfUg/wD6E3u2V7Lf1OtrmtCLiuVHsl9Ctq6Xqx6IP2Zf+xWY3WWcbN04u1911vt/Yy5RUi40nG9NrrcU8k8tpX35GQ1wwdR1k9tuPBy4KOzt2mlC0WlHiLizldPO9rWRr8FWVelCcoq04qTi+Ml7zM670YSnS25qmrTzc60G+LfYXBzg87Zyb2Ulms7pWxPwdCMs9mcc7WqRcJdtn0ZlroiFqs+5HxM403kujJZXv+PSStF85LuR8TJk5bbwtQAdHMAAAAAAAAAAAAAAAAAAAAAUuN52fs+FETGVowi5TkoRVryk0oq7srvtaJeN52fs+FFTrA5cBPYylens8arDPhI5bVLjr7sznVIlarGcdqElODzjKLTi16Gt5+ar+dx7tTwnDDtOlGytyk+cbupNO7qJSbve7au3c76redx7tT4E/wBleNhpbmpdsPHErIbiz0vzUu2HjiVdPcXl2mIWLM9pM0OMM7pQ51UbLQHm9HuI+dJ4WFR2nBTTg4NNfqy3rseXuR+6A82o9xE6UUzrtwz1X0KMYK0IxhG7dopRV2227LpbdyTornZ9yPiZ0dFHTAUdmcnvbjFe5syTkt4TwAWgAAAAAAAAAAAAAAAAAAAAAUmN52fs+FFVp+/Ays7PapfrKN/9WOV3OKz3cpXv07naY7nZ+z4UUetMJypWjyG4qdoyn+vDZvGPHcbpp7Oea6LnP1SJQd6UHZxy3NJPe+qT+L7Ttqr53Hu1PgRMJVvSStKMorjbVOrDNt53nFbT6W+t9FyXqp53HuVPgT/ZXjY6X5qXbDxxKunuLPTHNS7YfMiVdPcXl2mIWMM7pQ0WMM7pQ51URKGma9NbMaklGNrLbtHd0G80FpNYmkp2tNcWaXRLr7GjzCta7yWe939CNDqZpGNOsqTaSrqy7yzj9V95OGW1fQ1dGZaUsnOzfn3heU+6vizmdMJypdkfiz0PmJYANYAAAAAAAAAAAAAAAAAAAAAKPHc7P2fCin1lgpYecW0k3SV2m7PhoWezHOTvuimm3ZJptMt8dzs+2PhRHxCTWavuf3p3T96RzvamfotOlHZaas807p5vPe7X32vle3Qd9U/O49yp8EfNejCCtCMYLLKMVFZKy3eg+tUvO13Kn0In8leNjpjmZdsPmRKunuLTTPMy7YfMiVVPcdMu0xCxhndKGhxhntKHOqjN4l8Z7t66fQc9FucsVQUN/DUtnf0TWYxHKl+HuNL5O9EudWWKmuJSWzT9NSSzf3Rf8yIxm9faucw0fq/49FOmF5UuyPxZzOmE5Uu7H4s9L4SWADWAAAAAAAAAAAAAAAAAAAAACix3Oz7Y+FEevuO+O52fbHwoj19xyqlRjek/NUfO13Kn0GN6T81P87/7dT4xJnavGy0zzMu2HzIlTT3FtpnmZdsPmRKinuOmXaYh4szulDQ4sz2kznVRy0dq7UxTUktilltTndKT6o25X5zR6Bo/BwoU40qatCKy62+lv0tkHV+q1hqPEqPi71Btb30lhwz/AGdX+HIvDGTl01NbLOTG9R2PvCcuXdj8ZEbhn+zq/wAORIwLblJ2klaK40XHO76y3GpoANSAAAAAAAAAAAAAAAAAAAAAKXG0JupJqEmnazSbXJRGrUJ25E//AAl/Y0YJ+W7sPi8HWe6lVfZTn/Y+9U9G14Yl1KlKcIcHNbUls5txsrPPrNqDJhy36RNKUpTpSjFXk9my7Jpv4FXHDVEuRL3MvwVZuzdk8VhKr3U6j9iRTY7Q+JnyaFR/db4nooJ+I36V2r+HnTw9KFSOzOMbSjk7O76ixALiQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAH//Z" alt="Son Môi" class="product-img">
+        <h4>Son Môi Dưỡng Ẩm</h4>
+        <p>Màu sắc tự nhiên, mềm môi cả ngày.</p>
+        <p class="price">225.000đ <small><del>250.000đ</del></small></p>
+
+        <!-- Thanh trạng thái kho -->
+        <label>Còn hàng: 30%</label>
+        <div class="progress">
+          <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="30"
+               aria-valuemin="0" aria-valuemax="100" style="width:30%">
+          </div>
+        </div>
+
+        <a href="product-detail.html" class="btn btn-buy">Xem chi tiết</a>
+      </div>
+    </div>
+
+    <!-- Sản phẩm 3 -->
+    <div class="col-sm-4">
+      <div class="product-card">
+        <span class="discount-tag">-15%</span>
+        <span class="status-tag">NEW</span>
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS0fBW1Gkd_jfu-Z3T_XLNgjvjdEHEIo47TIw&s" alt="Sữa Rửa Mặt" class="product-img">
+        <h4>Sữa Rửa Mặt Dịu Nhẹ</h4>
+        <p>Làm sạch sâu, giữ ẩm tự nhiên cho da.</p>
+        <p class="price">153.000đ <small><del>180.000đ</del></small></p>
+
+        <!-- Thanh trạng thái kho -->
+        <label>Còn hàng: 90%</label>
+        <div class="progress">
+          <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="90"
+               aria-valuemin="0" aria-valuemax="100" style="width:90%">
+          </div>
+        </div>
+
+        <a href="product-detail.html" class="btn btn-buy">Xem chi tiết</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</body>
+</html>
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Chi tiết sản phẩm - Kem Dưỡng Da</title>
+
+  <!-- Bootstrap -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+  <!-- xZoom CSS -->
+  <link rel="stylesheet" href="https://payalord.github.io/xZoom/src/xzoom.css">
+
+  <!-- Bootstrap Star Rating (kartik-v) -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-star-rating@4.1.2/css/star-rating.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-star-rating@4.1.2/themes/krajee-svg/theme.css" rel="stylesheet">
+
+  <style>
+    body { background-color: #f9f9f9; }
+    .product-title { margin-top: 20px; }
+    .price { color: #e63946; font-size: 1.5em; font-weight: bold; }
+    .thumbs img {
+      width: 80px; height: 80px;
+      margin: 5px; border-radius: 6px;
+      cursor: pointer; border: 2px solid transparent;
+    }
+    .thumbs img:hover { border-color: #ff4081; }
+    .btn-buy {
+      background-color: #ff4081; color: white;
+      border: none; padding: 10px 20px; margin-top: 15px;
+    }
+    .btn-buy:hover { background-color: #e91e63; }
+    .xzoom-gallery { border-radius: 6px; }
+  </style>
+</head>
+<body>
+
+<div class="container py-5">
+  <a href="index.html">&larr; Quay lại danh sách</a>
+
+  <div class="row" style="margin-top: 30px;">
+    <!-- Cột ảnh -->
+    <div class="col-md-6 text-center">
+      <img class="xzoom img-responsive" id="xzoom-default"
+           src="https://cf.shopee.vn/file/f25ae4cc93b0ad437f185f9eb1dcdc6c"
+           xoriginal="https://cf.shopee.vn/file/f25ae4cc93b0ad437f185f9eb1dcdc6c"
+           alt="Kem Dưỡng Da">
+
+      <div class="thumbs">
+        <a href="https://cdn.tgdd.vn/Files/2021/03/29/1339074/kem-duong-da-innisfree-green-tea-fresh-cream-san-pham-khong-the-thieu-cho-ngay-nang-nong-202103291510061875.jpg">
+          <img class="xzoom-gallery"
+               src="https://cdn.tgdd.vn/Files/2021/03/29/1339074/kem-duong-da-innisfree-green-tea-fresh-cream-san-pham-khong-the-thieu-cho-ngay-nang-nong-202103291510061875.jpg">
+        </a>
+        <a href="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSoNn2FuwhmxIv-YMiX8k5IDobuCnem4xVs5yCead9uonT5749Z6boQN1wGVOaSWHDfQxI&usqp=CAU">
+          <img class="xzoom-gallery"
+               src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSoNn2FuwhmxIv-YMiX8k5IDobuCnem4xVs5yCead9uonT5749Z6boQN1wGVOaSWHDfQxI&usqp=CAU">
+        </a>
+        <a href="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRAD-2dM3Wyu4amMklFlWtOko5sF3YoFSLFwDrq1a2mjqLnRrweB4qaFaCe5uQ5VbPbbuQ&usqp=CAU">
+          <img class="xzoom-gallery"
+               src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRAD-2dM3Wyu4amMklFlWtOko5sF3YoFSLFwDrq1a2mjqLnRrweB4qaFaCe5uQ5VbPbbuQ&usqp=CAU">
+        </a>
+      </div>
+    </div>
+
+    <!-- Cột mô tả -->
+    <div class="col-md-6">
+      <h2 class="product-title">Kem Dưỡng Da Ban Đêm</h2>
+
+      <!-- Thanh đánh giá sao (kartik-v) -->
+      <input id="product-rating" name="rating" value="4" type="number" class="rating"
+             min="0" max="5" step="0.5"
+             data-size="md" data-theme="krajee-svg" data-show-clear="false" data-show-caption="false">
+
+      <p style="margin-top: 10px;">
+        Giúp làn da mềm mịn, tái tạo tế bào và dưỡng trắng tự nhiên trong giấc ngủ.
+      </p>
+      <p class="price">Giá: 350.000đ</p>
+      <p><strong>Thương hiệu:</strong> Nature Glow</p>
+      <p><strong>Xuất xứ:</strong> Hàn Quốc</p>
+      <p><strong>Trọng lượng:</strong> 50ml</p>
+
+      <button class="btn btn-buy">Thêm vào giỏ hàng</button>
+    </div>
+  </div>
+
+  <hr>
+
+  <div class="row">
+    <div class="col-md-12">
+      <h4>Mô tả chi tiết</h4>
+      <p>
+        Kem dưỡng da ban đêm giúp phục hồi làn da mệt mỏi, chống oxy hóa và cấp ẩm sâu.
+        Thành phần tự nhiên, không chứa paraben hay cồn, phù hợp với mọi loại da, kể cả da nhạy cảm.
+      </p>
+      <ul>
+        <li>Chiết xuất hoa cúc và collagen tự nhiên</li>
+        <li>Thấm nhanh, không nhờn rít</li>
+        <li>Dưỡng trắng và làm đều màu da</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- JS -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+<!-- xZoom JS -->
+<script src="https://payalord.github.io/xZoom/src/xzoom.min.js"></script>
+
+<!-- Bootstrap Star Rating (kartik-v) -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap-star-rating@4.1.2/js/star-rating.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap-star-rating@4.1.2/themes/krajee-svg/theme.js"></script>
+
+<script>
+  $(document).ready(function() {
+    // Khởi tạo xZoom
+    $(".xzoom, .xzoom-gallery").xzoom({
+      zoomWidth: 400,
+      tint: "#333",
+      Xoffset: 15,
+      position: "right"
+    });
+
+    // Khởi tạo rating (hiển thị sao SVG)
+    $("#product-rating").rating({
+      theme: "krajee-svg",
+      showClear: false,
+      showCaption: false,
+      step: 0.5
+    });
+  });
+</script>
+
+</body>
+</html>
